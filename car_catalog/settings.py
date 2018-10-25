@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'products.apps.ProductsConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,13 +74,24 @@ WSGI_APPLICATION = 'car_catalog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
+
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'car_catalog',
+       'USER': 'root',
+       'PASSWORD': '',
+       'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+       'PORT': '3306',
+   }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -118,3 +130,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
