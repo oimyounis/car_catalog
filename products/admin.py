@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import Category, ProductType, ProductTypeField, ProductTypeFieldChoice
-
-
-admin.site.register(Category)
+from .models import Category, ProductType, ProductTypeField, ProductTypeFieldChoice, Product
 
 
 class FieldsInline(admin.TabularInline):
@@ -18,10 +15,18 @@ class ProductTypeFieldAdmin(admin.ModelAdmin):
         ChoicesInline,
     ]
 
+    list_display = ('title', 'product_type')
+
     class Media:
         js = ('products/js/product_type_field.js',)
         css = {'all': ['products/css/product_type_field.css']}
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'parent')
+
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(ProductTypeField, ProductTypeFieldAdmin)
 admin.site.register(ProductType)
+admin.site.register(Product)
