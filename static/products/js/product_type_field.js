@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(e){
     var choices_group = document.querySelector('#choices-group');
 
     function updateChoicesGroup(val) {
-        if (choices_group && ['4', '5', '6'].indexOf(val) != -1){
+        if (choices_group && ['4'].indexOf(val) != -1){
             choices_group.style['display'] = 'block';
         }
         else {

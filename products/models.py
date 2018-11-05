@@ -1,19 +1,6 @@
 from django.db import models
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-    parents = models.ManyToManyField('self', 'children', symmetrical=False, blank=True)
-
-    @property
-    def parent(self):
-        allcats = [cat for cat in self.parents.values_list('name', flat=True)]
-        return ', '.join(allcats)
-
-    def __str__(self):
-        return self.name
-
-
 class FieldType:
     TEXT = 1
     LONG_TEXT = 2
@@ -22,6 +9,19 @@ class FieldType:
     FILE = 5
     IMAGE = 6
     MULTI_IMAGE = 7
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    parents = models.ManyToManyField('self', 'children', symmetrical=False, blank=True)
+
+    @property
+    def parent(self):
+        allcats = [cat for cat in self.parents.values_list('name', flat=True)]
+        return ', '.join(allcats)
 
     def __str__(self):
         return self.name

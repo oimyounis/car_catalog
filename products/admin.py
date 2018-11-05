@@ -26,7 +26,12 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'parent')
 
 
+class ProductAdmin(admin.ModelAdmin):
+    class Media:
+        js = ('products/js/reverse.js', 'products/js/product_admin_form_generator.js',)
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(ProductTypeField, ProductTypeFieldAdmin)
 admin.site.register(ProductType)
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
