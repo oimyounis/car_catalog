@@ -8,21 +8,21 @@
                     <div class="form-row field-{{ field.title|slugify }}">
                         <div>
                             <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
-                            <input type="text" name="field_{{ field.id }}" class="vTextField" maxlength="255" id="id_{{ field.title|slugify }}">
+                            <input type="text" name="field_{{ field.id }}_{{ field.type }}" class="vTextField" maxlength="255" id="id_{{ field.title|slugify }}">
                         </div>
                     </div>
                 {% elif field.type == FieldType.LONG_TEXT %}
                     <div class="form-row field-{{ field.title|slugify }}">
                         <div>
                             <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
-                            <textarea name="field_{{ field.id }}" cols="40" rows="10" class="vLargeTextField" id="id_{{ field.title|slugify }}"></textarea>
+                            <textarea name="field_{{ field.id }}_{{ field.type }}" cols="40" rows="10" class="vLargeTextField" id="id_{{ field.title|slugify }}"></textarea>
                         </div>
                     </div>
                 {% elif field.type == FieldType.MULTI_VALUE %}
                     <div class="form-row field-{{ field.title|slugify }}">
                         <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
                         <div class="related-widget-wrapper">
-                            <select name="field_{{ field.id }}" id="id_{{ field.title|slugify }}" multiple="">
+                            <select name="field_{{ field.id }}_{{ field.type }}" id="id_{{ field.title|slugify }}" multiple="">
                                 {% for choice in field.choices.all %}
                                     <option value="{{ choice.id }}">{{ choice.text }}</option>
                                 {% endfor %}
@@ -34,28 +34,28 @@
                     <div class="form-row field-{{ field.title|slugify }}">
                         <div>
                             <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
-                            <input type="number" name="field_{{ field.id }}" class="vIntegerField" id="id_{{ field.title|slugify }}">
+                            <input type="number" name="field_{{ field.id }}_{{ field.type }}" class="vIntegerField" id="id_{{ field.title|slugify }}">
                         </div>
                     </div>
                 {% elif field.type == FieldType.FILE %}
                     <div class="form-row field-{{ field.title|slugify }}">
                         <div>
                             <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
-                            <input type="file" name="field_{{ field.id }}" id="id_{{ field.title|slugify }}">
+                            <input type="file" name="field_{{ field.id }}_{{ field.type }}" id="id_{{ field.title|slugify }}">
                         </div>
                     </div>
                 {% elif field.type == FieldType.IMAGE %}
                     <div class="form-row field-{{ field.title|slugify }}">
                         <div>
                             <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
-                            <input type="file" name="field_{{ field.id }}" accept="image/*" id="id_{{ field.title|slugify }}">
+                            <input type="file" name="field_{{ field.id }}_{{ field.type }}" accept="image/*" id="id_{{ field.title|slugify }}">
                         </div>
                     </div>
                 {% elif field.type == FieldType.MULTI_IMAGE %}
                     <div class="form-row field-{{ field.title|slugify }}">
                         <div>
                             <label for="id_{{ field.title|slugify }}">{{ field.title }}:</label>
-                            <input type="file" name="field_{{ field.id }}" accept="image/*" multiple id="id_{{ field.title|slugify }}">
+                            <input type="file" name="field_{{ field.id }}_{{ field.type }}" accept="image/*" multiple id="id_{{ field.title|slugify }}">
                         </div>
                     </div>
                 {% endif %}

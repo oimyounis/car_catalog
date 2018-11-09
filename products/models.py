@@ -84,4 +84,4 @@ class ProductImageFieldValue(models.Model):
 class ProductMultiValueFieldValue(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     field = models.ForeignKey(ProductTypeField, on_delete=models.SET_NULL, null=True, blank=True)
-    value = models.TextField(null=True, blank=True)
+    value = models.ForeignKey(ProductTypeFieldChoice, on_delete=models.CASCADE, null=True, blank=True)

@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function(e){
         type_select.addEventListener('change', function(e){
             var product_type_id = type_select.value;
             if (product_type_id){
+                document.querySelector('form').setAttribute('enctype', 'multipart/form-data');
+
                 fetch('/products/api/product_fields_form/' + product_type_id).then(function(res){return res.text()})
                 .then(function(res){
                     var type_filed_wrapper = document.querySelector('div.type-field-wrapper');
